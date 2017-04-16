@@ -1,0 +1,7 @@
+## Assembly Language Sample Programs
+
+Just doing a hands-on work on assembly language in my college course. Thought that I could share it with you all :)
+
+1. Lab01
+  * A program for finding the palindrome of string. Works only if case of both the characters are same.
+  * A program to encode the numbers in a string with a rule given in the problem statement. 
