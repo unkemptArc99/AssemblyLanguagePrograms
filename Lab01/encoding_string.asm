@@ -60,10 +60,10 @@
 				cmp AL,0
 			jne loop2 						;if not the end of string go back to taking another byte
 			PutStr prompt_msg2
-			PutStr input_string
+			PutStr input_string				;output the modified string
 			nwln
 			PutStr prompt_msg3
-			GetStr response,1
+			GetStr response,1				;take response to continue
 			cmp byte[response],'y'
 		je loop1
 			cmp byte[response],'Y'

@@ -1,5 +1,6 @@
 ## Assembly Language Sample Programs
 
+**Using NASM as the assembler**
 Just doing a hands-on work on assembly language in my college course. Thought that I could share it with you all :)
 
 1. Lab01
