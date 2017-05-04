@@ -56,9 +56,29 @@
 		push word[p]
 		push A
 		call read_matrix
+		nwln
+		
+		;Getting input for B
+		PutStr prompt_msg3B
+		nwln
+		push word[p]
+		push B
+		call read_matrix
+		nwln
+
+		;Matrix addition
+		mov CX,0
+		push CX
+		push word[p]
+		push A
+		push B
+		push C
+		call matrix_add
+
+		;Printing C
 		push word[c]
 		push word[r]
-		push A
+		push C
 		call print_matrix
 		nwln
 
@@ -84,6 +104,38 @@ read_matrix:
 	loop_read_end:
 		leave
 		ret 6
+
+matrix_add:
+	enter 0,0
+	;EBP+8 is the address of the matrix C
+	;EBP+12 is the address of the matrix B
+	;EBP+16 is the address of the matrix A
+	;EBP+20 is the size of the matrices
+	;EBP+22 is the counter
+
+	;moving the address of corresponding matrix in corresponding registers
+	mov EAX,[EBP+16]
+	mov EBX,[EBP+12]
+	mov ECX,[EBP+8]
+	;assigning DX as the size counter
+	mov EDX,0
+
+	loop_add:
+		mov EDX,[EAX]
+		mov [ECX],EDX
+		mov EDX,[EBX]
+		add [ECX],EDX
+		add EAX,2
+		add EBX,2
+		add ECX,2
+		inc word[EBP+22]
+		mov DX,word[EBP+22]
+		cmp DX,word[EBP+20]
+	jne loop_add
+
+	loop_add_end:
+		leave
+		ret 14
 
 print_matrix:
 	enter 0,0
