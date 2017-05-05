@@ -33,7 +33,6 @@
 		PutStr prompt_msg1
 		GetInt [r]
 		mov AX,[r]
-		PutInt [r]
 
 		;Asking for number of columns
 		PutStr prompt_msg2
@@ -44,7 +43,6 @@
 		imul AX,BX
 		mov [p],AX
 
-		PutInt AX
 		nwln
 
 		;resetting value of AX as number of rows
